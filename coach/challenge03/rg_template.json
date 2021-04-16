@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0",
+  "apiProfile": "",
+  "parameters": {
+    "rgName": {
+      "type": "string"
+    },
+    "rgLocation": {
+      "type": "string"
+    }
+  },
+  "variables": { 
+   },
+  "functions": [  ],
+  "resources": [
+      {
+      "type": "Microsoft.Resources/resourceGroups",
+       "apiVersion": "2020-10-01",
+       "location": "[parameters('rgLocation')]",
+       "name": "[parameters('rgName')]",
+       "properties": {}
+      }
+  ],
+  "outputs": {  }
+}
