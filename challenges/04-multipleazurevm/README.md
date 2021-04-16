@@ -34,12 +34,10 @@ Modify your ARM template to include the public IP addresses as an output, make s
 
 ## Resources
 
-- [ARM deployment scopes](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-to-resource-group?tabs=azure-cli)
-- [ARM deployment modes](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes)
-- [ARM parameters](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-parameters?tabs=json)
-- [ARM variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-variables?tabs=json)
-- [ARM resource declaration](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/resource-declaration?tabs=json)
-- [ARM outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-powershell)
+- [ARM copy](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources?tabs=json)
+- [ARM copyIndex](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-numeric?tabs=json#copyindex)
+- [ARM template outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli)
+- [ARM deployment troubleshooting](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/common-deployment-errors)
 
 ## What's next?
 

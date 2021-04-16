@@ -35,6 +35,11 @@ services:
 
 After you have the image ready, modify the ARM template from the previous challenge to use this custom image.
 
+## Resources
+
+- [Image Builder](https://docs.microsoft.com/en-us/azure/virtual-machines/image-builder-overview)
+- [HashiCorp Packer](https://www.packer.io/)
+
 ## What's next?
 
 Once this section is completed, go back to [the agenda](../../README.md).

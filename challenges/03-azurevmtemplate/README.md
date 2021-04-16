@@ -157,6 +157,7 @@ Modify your ARM template to include the public IP address as an output. Use [thi
 - [ARM variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-variables?tabs=json)
 - [ARM resource declaration](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/resource-declaration?tabs=json)
 - [ARM outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-powershell)
+- [ARM deployment troubleshooting](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/common-deployment-errors)
 
 ## What's next?
 
