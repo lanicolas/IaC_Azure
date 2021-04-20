@@ -1,12 +1,12 @@
 # Challenge 07 - GitHub Actions
 
-The time has come, you have the code, but we need to also think about how to automate and execute it. For that you will use [GitHub Actions][github-actions] that allow you to create and perform any job such as [CI/CD][ci-cd] workflows that would be part of a completely customized and automated procedure.
+The time has come, you have the code, but we need to also think about how to automate and execute it. For that, you will use [GitHub Actions][github-actions] that allow you to create and perform any job such as Continous Integration / Continous Deployment ([CI/CD][ci-cd]) workflows that would be part of a completely customized and automated procedure.
 
 ## Exercise
 
-In the previous steps you have created several elements like the custom virtual machine image with the Azure Image Builder service, or a customized ARM template to deploy the infrastructure that your solution needs.
+In the previous steps, you have created several elements like the custom virtual machine image with the Azure Image Builder service, or a customized ARM template to deploy the infrastructure that your solution needs.
 
-In this challenge we ask you to build an automated [CI/CD][ci-cd] workflow that creates the image, compiles the bicep language to a template and then deploys this template to your Azure subscription.
+In this challenge, we ask you to build an automated [CI/CD][ci-cd] workflow that creates the image, compiles the bicep language to a template, and then deploys this template to your Azure subscription.
 
 ### Acceptance criteria
 
@@ -19,7 +19,7 @@ In this challenge we ask you to build an automated [CI/CD][ci-cd] workflow that 
 
 ## How to
 
-> Note: If you haven't already register for a [GitHub Account](https://github.com/join)
+> Note: If you haven't already done it, register for a [GitHub Account](https://github.com/join)
 
 A [CI/CD workflow][ci-cd] in GitHub Actions is defined in a YAML file inside a special directory with the name ```.github/workflows```, and has a structure similar to this one:
 
@@ -45,7 +45,7 @@ jobs:
         - ...
 ```
 
-Every *job* represents a phase of the workflow, and can be run in parallel, or sequentially if you define a dependency (*needs*). Inside a *job* you find the steps that will perform the tasks you need. There are lot of already defined [Actions][github-actions] that allow you to run complex tasks inside your job in only one simple parametrizable step.
+Every *job* represents a phase of the workflow, and can be run in parallel, or sequentially if you define a dependency (*needs*). Inside a *job*, you find the steps that will perform the tasks you need. There are a lot of already defined [Actions][github-actions] that allow you to run complex tasks inside your job in only one simple parametrizable step.
 
 ### Tips
 
