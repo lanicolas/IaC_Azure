@@ -1,6 +1,6 @@
 # Challenge 01 - Getting Started
 
-In this challenge, you will connect to the [Azure Cloud Shell](https://azure.microsoft.com/en-us/features/cloud-shell/) that will be needed for future challenges.
+In this challenge, you will connect to the [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) that will be needed for future challenges.
 
 Cloud Shell is a free (excl. storage cost) service which provides you a virtual server in a container, including pre-installed Azure CLI.
 
@@ -41,7 +41,7 @@ After a few seconds you should see that your storage account has been created an
 
 ![Access CloudShell](../../img/01-gettingstarted/04.png)
 
-> **Note:** Behind the scenes this is creating a new Resource Group with the name `cloud-shell-storage-westeurope` (or which ever region you defaulted to). If you need more information, it can be found [here](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage).
+> **Note:** Behind the scenes this is creating a new Resource Group with the name `cloud-shell-storage-westeurope` (or which ever region you defaulted to). If you need more information, it can be found [here](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage).
 
 SUCCESS!
 You are now logged into the Azure Cloud Shell which uses your portal session to automatically authenticate you with the Azure CLI.

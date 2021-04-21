@@ -15,11 +15,11 @@ The resources you will use in this challenge:
 
 ## How to
 
-Navigate to the [Azure Portal](https://portal.azure.com/), create a Linux Azure VM, you can follow [this quickstart](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal)
+Navigate to the [Azure Portal](https://portal.azure.com/), create a Linux Azure VM, you can follow [this quickstart](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
 
 First you will need to create a new resource group to hold your resources you can name it `challenge02` and select an Azure region that is close to you.
 
-Create a Virtual Network and Subnet using a basic CIDR block to allocate an IP block, you can follow [this quickstart](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal) to guide you.
+Create a Virtual Network and Subnet using a basic CIDR block to allocate an IP block, you can follow [this quickstart](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) to guide you.
 
 - vnetName: < vmName>-vnet
 - Use IPv4
@@ -45,7 +45,7 @@ I am sure this was not difficult but, how long did it take you? what if you had 
 
 ### Export the template
 
-Lets now explore another option, try to export now the ARM template of the resource you just created. You can use [this document](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) to guide you. Save the template on your local computer, we will use it later on in the workshop.
+Lets now explore another option, try to export now the ARM template of the resource you just created. You can use [this document](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) to guide you. Save the template on your local computer, we will use it later on in the workshop.
 
 ## Success Criteria
 
@@ -60,8 +60,8 @@ You are done with this challenge when you have successfully:
 
 ## Resources
 
-- [Create a Linux Azure VM using the Azure Portal](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal)
-- [Create vNet using the Azure Portal](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal)
+- [Create a Linux Azure VM using the Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
+- [Create vNet using the Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## What's next?
 

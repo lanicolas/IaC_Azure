@@ -61,12 +61,12 @@ You are done with this challenge when you have successfully:
 
 - [Azure Bicep Tutorial](https://github.com/Azure/bicep/blob/main/docs/tutorial/01-simple-template.md)
 - [Azure Bicep](https://github.com/Azure/bicep/blob/main/docs/tutorial/01-simple-template.md)
-- [Azure Bicep deploy](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-tutorial-create-first-bicep?tabs=azure-powershell#deploy-bicep-file)
-- [Azure Bicep parameters](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-tutorial-add-parameters?tabs=azure-powershell)
-- [Azure Bicep functions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-tutorial-add-functions?tabs=azure-powershell)
-- [Azure Bicep Variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-tutorial-add-variables?tabs=azure-powershell)
-- [Azure Bicep outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-tutorial-add-outputs?tabs=azure-powershell)
-- [ARM deployment troubleshooting](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/common-deployment-errors)
+- [Azure Bicep deploy](https://docs.microsoft.com/azure/azure-resource-manager/templates/bicep-tutorial-create-first-bicep?tabs=azure-powershell#deploy-bicep-file)
+- [Azure Bicep parameters](https://docs.microsoft.com/azure/azure-resource-manager/templates/bicep-tutorial-add-parameters?tabs=azure-powershell)
+- [Azure Bicep functions](https://docs.microsoft.com/azure/azure-resource-manager/templates/bicep-tutorial-add-functions?tabs=azure-powershell)
+- [Azure Bicep Variables](https://docs.microsoft.com/azure/azure-resource-manager/templates/bicep-tutorial-add-variables?tabs=azure-powershell)
+- [Azure Bicep outputs](https://docs.microsoft.com/azure/azure-resource-manager/templates/bicep-tutorial-add-outputs?tabs=azure-powershell)
+- [ARM deployment troubleshooting](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)
 
 ## What's next?
 

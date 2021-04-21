@@ -37,17 +37,17 @@ You can find these files inside the [*vmcontent* folder](./vmcontent).
 
 ### Azure Image Builder
 
-[Azure Image Builder](https://docs.microsoft.com/en-us/azure/virtual-machines/image-builder-overview) is an Azure service that would allow you to create predefined images with the required settings and software that meet your corporate standards, all of this being done in an automated approach and guaranting consistency.
+[Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/image-builder-overview) is an Azure service that would allow you to create predefined images with the required settings and software that meet your corporate standards, all of this being done in an automated approach and guaranting consistency.
 
 When building images with Azure Image Builder you will start with a Linux or Windows base image on top of which you will add your customizations as-code. The solution is based on [HashiCorp Packer](https://www.packer.io/) but being a managed service in Azure.
 
-Once you have an image ready you can publish it in the Azure Shared Image Gallery or as a managed image in VHD that you can later use as part of your automation.
+Once you have an image ready you can publish it in the [Azure Shared Image Gallery][shared-image-gallery] or as a managed image in VHD that you can later use as part of your automation.
 
 After you have the image ready, modify the ARM template from the previous challenge to use this custom image.
 
 ## Resources
 
-- [Image Builder](https://docs.microsoft.com/en-us/azure/virtual-machines/image-builder-overview)
+- [Image Builder](https://docs.microsoft.com/azure/virtual-machines/image-builder-overview)
 - [HashiCorp Packer](https://www.packer.io/)
 
 
@@ -57,3 +57,5 @@ Once this section is completed, go back to [the agenda](../../README.md).
 
 
 [ubuntu-18]: https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic?tab=Overview "Ubuntu Server 18.04 LTS by Canonical"
+[shared-image-gallery]: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries "Shared Image Galleries overview"
+[capture-image]: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image

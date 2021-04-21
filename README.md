@@ -52,7 +52,7 @@ These are the challenges for the workshop, it is important to note that they hav
 
 ### Challenges requirements
 
-This workshop will require that you have access to an Azure Subscription with at least Contributor rights to create resources and the ability to generate a service principal for the subscription (you need permissions on you Azure AD tenant). If you do not currently have access you can create a trial account by going to [https://azure.microsoft.com/en-us/free](https://azure.microsoft.com/en-us/free) and registering for a 3-month trail.
+This workshop will require that you have access to an Azure Subscription with at least Contributor rights to create resources and the ability to generate a service principal for the subscription (you need permissions on you Azure AD tenant). If you do not currently have access you can create a trial account by going to [https://azure.microsoft.com/free](https://azure.microsoft.com/free) and registering for a 3-month trail.
 
 Signing up for a trial requires:
 
@@ -77,8 +77,8 @@ Other resources used:
 
 Additional Resources can be found at:
 
-- [Azure infrastructure as code](https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/infrastructure-as-code)
-- [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/)
+- [Azure infrastructure as code](https://docs.microsoft.com/dotnet/architecture/cloud-native/infrastructure-as-code)
+- [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/)
 - [Azure Bicep](https://github.com/Azure/bicep)
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Labs](https://lab.github.com/)
