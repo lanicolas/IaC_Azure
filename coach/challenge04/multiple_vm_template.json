@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+      "vmCount": {
+        "type": "int",
+        "metadata": {
+          "description": "Specifies number of VMs to create"
+        }
+      },
       "vmName": {
         "type": "string",
         "metadata": {
@@ -86,8 +92,12 @@
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2020-05-01",
-      "name": "[variables('publicIPAddressName')]",
+      "name": "[concat(variables('publicIPAddressName'),'-',copyIndex(parameters('vmCount')))]",
       "location": "[parameters('location')]",
+      "copy": {
+        "name": "pipLoop",
+        "count": "[parameters('vmCount')]"
+      },
       "properties": {
         "publicIPAllocationMethod": "Dynamic"
       },
@@ -149,10 +159,14 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-05-01",
-      "name": "[variables('networkInterfaceName')]",
+      "name": "[concat(variables('networkInterfaceName'),'-',copyIndex(parameters('vmCount')))]",
+      "copy": {
+        "name": "nicLoop",
+        "count": "[parameters('vmCount')]"
+      },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIPAddressName'),'-',copyIndex(parameters('vmCount'))))]",
         "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]",
         "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
       ],
@@ -163,7 +177,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIPAddressName'),'-',copyIndex(parameters('vmCount'))))]"
               },
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNetName'), variables('vNetSubnetName'))]"
@@ -176,10 +190,14 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-12-01",
-      "name": "[parameters('vmName')]",
+      "name": "[concat(parameters('vmName'),'-',copyIndex(parameters('vmCount')))]",
+      "copy": {
+        "name": "vmLoop",
+        "count": "[parameters('vmCount')]"
+      },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('networkInterfaceName'),'-',copyIndex(parameters('vmCount'))))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -214,7 +232,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('networkInterfaceName'),'-',copyIndex(parameters('vmCount'))))]"
             }
           ]
         }
@@ -223,8 +241,11 @@
     ],
 "outputs": {
   "publicIpAddress": {
-      "type": "string",
-      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).ipAddress]"
+      "type": "array",
+      "copy": {
+        "count": "[parameters('vmCount')]", 
+        "input": "[reference(resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIPAddressName'),'-',copyIndex(parameters('vmCount')))).ipAddress)]"
+      }
     }
 }
 }

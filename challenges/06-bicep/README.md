@@ -14,13 +14,48 @@ Since you have now gone through the process of creating your own ARM templates, 
 
 You will create the same resources as you did in Challenge 04 but using Azure Bicep as a way to author the template. If you have not worked with Azure Bicep before, no worries you can follow [this tutorial](https://github.com/Azure/bicep/blob/main/docs/tutorial/01-simple-template.md) or you can leverage ARM template documentation from previous challenges, there you will see sections specific to Bicep.
 
-Once you are done authoring your Bicep file, run:
+Once you are done authoring your Bicep file, deloy resources by:
+
+```bash
+az deployment group create   --name <deployment name>   --resource-group challenge06  --template-file <bicepfile.bicep>
+```
+
+After the deployment have finished its run verify in the Azure Portal that all resources have been created properly.
+
+### Food for Tought
+
+You have used now Azure Bicep as a way to deploy resources to Azure, however, let's explore other features:
+
+Bicep can convert a bicep file into the equivalent ARM template file, meaning that you can use the Bicep file as an input and get the corresponding ARM template. To do so, run:
 
 ```bash
 bicep build <bicepfile.bicep>
 ```
 
-This will compile the bicep file to ARM template, compare the exported one with the one you author, see any changes?. Please, note that this step is not required and you could deploy to Azure from the Bicep file, this is just for learning purposes.
+- Compare the resulting ARM template with the ones you have created before. Notice any differences?
+- What approach do you like best?
+
+How about the other way around? What if you could use an ARM template and convert it to a bicep file, try it by running: 
+
+```bash
+bicep decompile arm_template.json
+```
+
+- Compare the resulting bicep file with the one you have created before. Notice any differences?
+- Does it sound interesting to be able to go back and forth between the two apporaches?
+
+## Success Criteria
+
+You are done with this challenge when you have successfully:
+
+- Created the following resources in Azure:
+  - 2 VMs in Azure using a bicep file
+  - Had 2 public IP addresses
+  - 1 NSG with port 22 and 80 open
+  - 1 vnet with 1 subnet
+- The naming convention follows the standards mentioned in challenge02
+- You have converted your bicep file into ARM templates
+- You have converted the ARM templates from challenge04 into a bicep file.
 
 ## Resources
 

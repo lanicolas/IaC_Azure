@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "vmName": {
+        "value": "challenge04"
+      }, 
+       "adminUsername": {
+          "value": "azureuser"
+      },
+        "adminPublicKey": {
+          "value": "xxxxxx"
+      },
+        "vmSize": {
+          "value": "Standard_D2s_v3"
+    },
+        "vmCount": {
+          "value": 2
+    }
+    }
+    }

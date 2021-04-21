@@ -20,17 +20,35 @@ After you are done editing your template deploy it with:
 
 ```shell
 az deployment group create \
---resource-group <rg_name> \
+--resource-group multiple-vm \
 --name rgdeployment  \
---template-file vm_template.json   \
---parameters vm_template.parameters.json
+--template-file multiple_vm_template.json   \
+--parameters multiple_vm_template.parameters.json
 ```
+
+> **Note:** you should use a new resource group or delete the resources from the previous challenge to avoid conflicts.
 
 Once the command has finished its run, use the Azure Portal to verify that you have an additional VM in your resource group.
 
 ### Outputs
 
 Modify your ARM template to include the public IP addresses as an output, make sure to include both VMs. Use [this documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
+
+### Food for Tought
+
+Think about how easy or difficult would it have been to edit the ARM template you got from the portal to add multiple copies of your Azure VM. What template would you rather use?
+
+## Success Criteria
+
+You are done with this challenge when you have successfully:
+
+- Created the following resources in Azure:
+  - 2 VMs in Azure using an ARM template
+  - The resources were created using capabilities of ARM and not copy pasting mulitple instances.
+  - Had 2 public IP addresses
+  - 1 NSG with port 22 and 80 open
+  - 1 vnet with 1 subnet
+- The naming convention follows the standards mentioned in challenge02
 
 ## Resources
 

@@ -122,7 +122,7 @@ Modify your ARM template to include:
 - User should be able to provide both the admin username and public key
 - Add a NSG to your existing networking with the following rules:
   - All outbound traffic should be allowed
-  - For inbound traffic allow only: SSH, HTTP and HTTPs.
+  - For inbound traffic allow only: SSH, and HTTP.
   - Deny any other inbound traffic.
 - Attach a public IP address to the VM.
 - Resources names should follow the same structure as before: < vmName>-nsg, < vmName>-pip, < vmName>-nic, etc.
@@ -148,6 +148,25 @@ You now have all the infrastructure in place and can now SSH into the Linux VM w
 You could check the value in the Azure Portal, however let's instead add an output to get that information. An output is a configurable piece of information that is returned from the deployed resources.
 
 Modify your ARM template to include the public IP address as an output. Use [this documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
+
+### Food for Tought
+
+Now that you have created your own ARM template and parameters file from scratch, go back to the ones you exported from the Azure Portal and compare the two:
+
+- Notice any differences?
+- Did you use the same parameters?
+- Is the exported template from the portal valid?
+
+## Success Criteria
+
+You are done with this challenge when you have successfully:
+
+- Created the following resources in Azure:
+  - 1 VM in Azure using an ARM template
+  - Had 1 public IP addresses
+  - 1 NSG with port 22 and 80 open
+  - 1 vnet with 1 subnet
+- The naming convention follows the standards mentioned in challenge02
 
 ## Resources
 

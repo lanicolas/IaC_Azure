@@ -1,4 +1,4 @@
-# Challenge 00 - Getting Started
+# Challenge 01 - Getting Started
 
 In this challenge, you will connect to the [Azure Cloud Shell](https://azure.microsoft.com/en-us/features/cloud-shell/) that will be needed for future challenges.
 

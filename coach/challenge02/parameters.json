@@ -2,20 +2,98 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualMachines_challenge02_name": {
+        "location": {
+            "value": "westeurope"
+        },
+        "networkInterfaceName": {
+            "value": "challenge02638"
+        },
+        "networkSecurityGroupName": {
+            "value": "challenge02-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                },
+                {
+                    "name": "HTTP",
+                    "properties": {
+                        "priority": 320,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "80"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "challenge02-subnet"
+        },
+        "virtualNetworkName": {
+            "value": "challenge02-vnet"
+        },
+        "addressPrefixes": {
+            "value": [
+                "192.168.0.0/16"
+            ]
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "challenge02-subnet",
+                    "properties": {
+                        "addressPrefix": "192.168.0.0/24"
+                    }
+                }
+            ]
+        },
+        "publicIpAddressName": {
+            "value": "challenge02-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Standard"
+        },
+        "virtualMachineName": {
+            "value": "challenge02"
+        },
+        "virtualMachineComputerName": {
+            "value": "challenge02"
+        },
+        "virtualMachineRG": {
+            "value": "challenge02"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "adminPublicKey": {
             "value": null
         },
-        "networkInterfaces_challenge02474_name": {
-            "value": null
-        },
-        "publicIPAddresses_challenge02_ip_name": {
-            "value": null
-        },
-        "virtualNetworks_challenge02_vnet_name": {
-            "value": null
-        },
-        "networkSecurityGroups_challenge02_nsg_name": {
-            "value": null
+        "zone": {
+            "value": "1"
         }
     }
 }
