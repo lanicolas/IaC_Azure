@@ -45,4 +45,4 @@ Once the VM is up and running, if you open the port 80 in the NSG you will be ab
 [image-builder-guide]: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder "Create a Linux image and distribute it to a Shared Image Gallery by using Azure CLI"
 [configure-template]: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder#download-and-configure-the-json "Download and configure the .json"
 [custom-template]: coach/challenge05/template.json
-[webpage]:../img/challenge06-html.png "The simple HTML served by the virtual machine"
+[webpage]:../img/challenge05-html.png "The simple HTML served by the virtual machine"
