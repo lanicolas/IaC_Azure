@@ -8,7 +8,7 @@ In the previous steps, you have created several elements like the custom virtual
 
 In this challenge, we ask you to build an automated [CI/CD][ci-cd] workflow that creates the image, compiles the bicep language to a template, and then deploys this template to your Azure subscription.
 
-### Acceptance criteria
+### Success criteria
 
 * You have created a new workflow that can be run automatically
 * Inside the workflow, you have at least two differentiated blocks, one for CI and another one for CD
