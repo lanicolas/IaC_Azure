@@ -43,7 +43,7 @@ When building images with Azure Image Builder you will start with a Linux or Win
 
 This service allows you to provide some contents and scripts to automate the Virtual Machine configuration and will perform all the necessary steps to generate, generalize and publish your virtual machine image.
 
-Follow this example and customize the json template: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder
+Follow [this example][image-builder-tutorial] and [customize the json template][image-builder-customizer] to provide the script and support files your deployment needs (the html and yaml files).
 
 Once you have an image ready you can publish it in the [Azure Shared Image Gallery][shared-image-gallery] or use it as a [managed image in VHD][capture-image] that you can later use as part of your automation.
 
@@ -52,6 +52,7 @@ After you have the image ready, modify the ARM template from the previous challe
 ## Resources
 
 - [Image Builder][image-builder]
+- [Image Builder Template Reference][image-builder-customizer]
 - [HashiCorp Packer](https://www.packer.io/)
 - [Custom image capture][capture-image]
 
@@ -61,6 +62,8 @@ After you have the image ready, modify the ARM template from the previous challe
 Once this section is completed, go back to [the agenda](../../README.md).
 
 [image-builder]: https://docs.microsoft.com/azure/virtual-machines/image-builder-overview "Image Builder Overview"
+[image-builder-tutorial]: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder "Create a Linux image and distribute it to a Shared Image Gallery by using Azure CLI"
 [ubuntu-18]: https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic?tab=Overview "Ubuntu Server 18.04 LTS by Canonical"
 [shared-image-gallery]: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries "Shared Image Galleries overview"
 [capture-image]: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image
+[image-builder-customizer]: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder-json#properties-customize
