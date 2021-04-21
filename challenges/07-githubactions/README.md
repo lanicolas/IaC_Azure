@@ -1,6 +1,6 @@
 # Challenge 07 - GitHub Actions
 
-The time has come, you have the code, but we need to also think about how to automate and execute it. For that, you will use [GitHub Actions][github-actions] that allow you to create and perform any job such as Continous Integration / Continous Deployment ([CI/CD][ci-cd]) workflows that would be part of a completely customized and automated procedure.
+The time has come, you have the code, but we need to also think about how to automate and execute it. For that, you will use [GitHub Actions][github-actions] that allow you to create and perform any job such as Continuous Integration / Continuous Deployment ([CI/CD][ci-cd]) workflows that would be part of a completely customized and automated procedure.
 
 ## Exercise
 
@@ -30,7 +30,7 @@ jobs:
     build:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/chekcout@v2
+        - uses: actions/checkout@v2
         - uses: actions/setup-node@v1
         - run: npm install
         - ...
