@@ -24,6 +24,7 @@ var publicIPAddressName = '${vmName}-ip'
 var networkInterfaceName = '${vmName}-nic'
 var networkSecurityGroupName_var = '${vmName}-nsg'
 var networkSecurityGroupName2_var = '${vNetSubnetName}-nsg'
+var vmArray=range(1, vmCount)
 
 resource networkSecurityGroupName 'Microsoft.Network/networkSecurityGroups@2020-05-01' = {
   name: networkSecurityGroupName_var
@@ -60,7 +61,7 @@ resource networkSecurityGroupName 'Microsoft.Network/networkSecurityGroups@2020-
   }
 }
 
-resource publicIPAddressName_vmCount 'Microsoft.Network/publicIPAddresses@2020-05-01' = [for i in range(1, vmCount): {
+resource publicIPAddressName_vmCount 'Microsoft.Network/publicIPAddresses@2020-05-01' = [for i in vmArray: {
   name: '${publicIPAddressName}${i}'
   location: location
   properties: {
@@ -94,7 +95,7 @@ resource vNetName 'Microsoft.Network/virtualNetworks@2020-05-01' = {
   }
 }
 
-resource networkInterfaceName_vmCount 'Microsoft.Network/networkInterfaces@2020-05-01' = [for i in range(1, vmCount): {
+resource networkInterfaceName_vmCount 'Microsoft.Network/networkInterfaces@2020-05-01' = [for i in vmArray: {
   name: '${networkInterfaceName}${i}'
   location: location
   properties: {
@@ -120,7 +121,7 @@ resource networkInterfaceName_vmCount 'Microsoft.Network/networkInterfaces@2020-
   ]
 }]
 
-resource vmName_vmCount 'Microsoft.Compute/virtualMachines@2019-12-01' = [for i in range(1, vmCount): {
+resource vmName_vmCount 'Microsoft.Compute/virtualMachines@2019-12-01' = [for i in vmArray: {
   name: '${vmName}${i}'
   location: location
   properties: {
@@ -167,4 +168,4 @@ resource vmName_vmCount 'Microsoft.Compute/virtualMachines@2019-12-01' = [for i 
 }]
 
 
-  output publicIpAddress array = [for i in range(1, vmCount): reference(resourceId('Microsoft.Network/publicIPAddresses', '${publicIPAddressName}${i}'))]
+output publicIpAddress array = [for i in vmArray: reference(resourceId('Microsoft.Network/publicIPAddresses', '${publicIPAddressName}${i}'),'2020-07-01').ipAddress]

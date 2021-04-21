@@ -94,9 +94,9 @@ Create a Virtual Network and Subnet using a basic CIDR block to allocate an IP b
 - subnetName: < vmName >-subnet
 - subnetPrefix: "10.0.1.0/24"
 
-Make sure again to use variables to customize this deployment, you can reference a new parameter vmName to create network name and the subnet name using variables as described [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-variables?tabs=json). In this case, you will use the value from a parameter (vmName) to construct the variables vnetName and subnetName.
+Make sure again to use variables to customize this deployment, you can reference a new parameter vmName to create network name and the subnet name using variables as described [here](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-variables?tabs=json). In this case, you will use the value from a parameter (vmName) to construct the variables vnetName and subnetName.
 
-The VM should be deployed in the same location as the resource group from before. Take a look at examples [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-parameters?tabs=json).
+The VM should be deployed in the same location as the resource group from before. Take a look at examples [here](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters?tabs=json).
 
 Re-run the template with the command:
 
@@ -139,7 +139,7 @@ az deployment group create \
 
 Using a browser, navigate to the Azure Portal and check out the resources that have been deployed, make sure they are in the right region, everything is configured properly and that it follows the naming convention.
 
-> **Note:** what happened to the already existing resources in the resource group like the vnet? Take a minute to understand ARM deployment modes as described [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes).
+> **Note:** what happened to the already existing resources in the resource group like the vnet? Take a minute to understand ARM deployment modes as described [here](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes).
 
 ### Outputs
 
@@ -147,7 +147,7 @@ You now have all the infrastructure in place and can now SSH into the Linux VM w
 
 You could check the value in the Azure Portal, however let's instead add an output to get that information. An output is a configurable piece of information that is returned from the deployed resources.
 
-Modify your ARM template to include the public IP address as an output. Use [this documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
+Modify your ARM template to include the public IP address as an output. Use [this documentation](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
 
 ### Food for Tought
 
@@ -170,13 +170,13 @@ You are done with this challenge when you have successfully:
 
 ## Resources
 
-- [ARM deployment scopes](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-to-resource-group?tabs=azure-cli)
-- [ARM deployment modes](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes)
-- [ARM parameters](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-parameters?tabs=json)
-- [ARM variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-variables?tabs=json)
-- [ARM resource declaration](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/resource-declaration?tabs=json)
-- [ARM outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-powershell)
-- [ARM deployment troubleshooting](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/common-deployment-errors)
+- [ARM deployment scopes](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-resource-group?tabs=azure-cli)
+- [ARM deployment modes](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)
+- [ARM parameters](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters?tabs=json)
+- [ARM variables](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-variables?tabs=json)
+- [ARM resource declaration](https://docs.microsoft.com/azure/azure-resource-manager/templates/resource-declaration?tabs=json)
+- [ARM outputs](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-powershell)
+- [ARM deployment troubleshooting](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)
 
 ## What's next?
 

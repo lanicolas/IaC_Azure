@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.3.255.40792",
-      "templateHash": "14826362235100154903"
+      "templateHash": "4669063419022370098"
     }
   },
   "parameters": {
@@ -61,7 +61,8 @@
     "publicIPAddressName": "[format('{0}-ip', parameters('vmName'))]",
     "networkInterfaceName": "[format('{0}-nic', parameters('vmName'))]",
     "networkSecurityGroupName_var": "[format('{0}-nsg', parameters('vmName'))]",
-    "networkSecurityGroupName2_var": "[format('{0}-nsg', variables('vNetSubnetName'))]"
+    "networkSecurityGroupName2_var": "[format('{0}-nsg', variables('vNetSubnetName'))]",
+    "vmArray": "[range(1, parameters('vmCount'))]"
   },
   "resources": [
     {
@@ -103,11 +104,11 @@
     {
       "copy": {
         "name": "publicIPAddressName_vmCount",
-        "count": "[length(range(1, parameters('vmCount')))]"
+        "count": "[length(variables('vmArray'))]"
       },
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2020-05-01",
-      "name": "[format('{0}{1}', variables('publicIPAddressName'), range(1, parameters('vmCount'))[copyIndex()])]",
+      "name": "[format('{0}{1}', variables('publicIPAddressName'), variables('vmArray')[copyIndex()])]",
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "Dynamic"
@@ -146,11 +147,11 @@
     {
       "copy": {
         "name": "networkInterfaceName_vmCount",
-        "count": "[length(range(1, parameters('vmCount')))]"
+        "count": "[length(variables('vmArray'))]"
       },
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-05-01",
-      "name": "[format('{0}{1}', variables('networkInterfaceName'), range(1, parameters('vmCount'))[copyIndex()])]",
+      "name": "[format('{0}{1}', variables('networkInterfaceName'), variables('vmArray')[copyIndex()])]",
       "location": "[parameters('location')]",
       "properties": {
         "ipConfigurations": [
@@ -159,7 +160,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', format('{0}{1}', variables('publicIPAddressName'), range(1, parameters('vmCount'))[copyIndex()]))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', format('{0}{1}', variables('publicIPAddressName'), variables('vmArray')[copyIndex()]))]"
               },
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNetName_var'), variables('vNetSubnetName'))]"
@@ -177,11 +178,11 @@
     {
       "copy": {
         "name": "vmName_vmCount",
-        "count": "[length(range(1, parameters('vmCount')))]"
+        "count": "[length(variables('vmArray'))]"
       },
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-12-01",
-      "name": "[format('{0}{1}', parameters('vmName'), range(1, parameters('vmCount'))[copyIndex()])]",
+      "name": "[format('{0}{1}', parameters('vmName'), variables('vmArray')[copyIndex()])]",
       "location": "[parameters('location')]",
       "properties": {
         "hardwareProfile": {
@@ -216,7 +217,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', format('{0}{1}', variables('networkInterfaceName'), range(1, parameters('vmCount'))[copyIndex()]))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', format('{0}{1}', variables('networkInterfaceName'), variables('vmArray')[copyIndex()]))]"
             }
           ]
         }
@@ -230,8 +231,8 @@
     "publicIpAddress": {
       "type": "array",
       "copy": {
-        "count": "[length(range(1, parameters('vmCount')))]",
-        "input": "[reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}{1}', variables('publicIPAddressName'), range(1, parameters('vmCount'))[copyIndex()])))]"
+        "count": "[length(variables('vmArray'))]",
+        "input": "[reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}{1}', variables('publicIPAddressName'), variables('vmArray')[copyIndex()])), '2020-07-01').ipAddress]"
       }
     }
   }

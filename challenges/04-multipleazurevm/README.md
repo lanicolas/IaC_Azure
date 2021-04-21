@@ -12,9 +12,9 @@ Just to be safe create a copy of your ARM template and parameters file to work o
 
 Now modify the ARM template to create multiple VMs, first you should include a new parameter called `vmCount` that will allow you to customize the automation to the number of VMs you actually want to deploy. For this challenge set the vmCount to 2.
 
-There are multiple ways to add additional VMs to your template, you could certainly copy and paste your resource section as many times as VMs you need to deploy, however that is not efficient and it will make your template not easy to reuse or manage, so you should use the [copy loop](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources?tabs=json) to create multiple instances of an specific resource section in your template. Although the goal is to create multiple Azure VMs keep in mind that they are not standalone resources and that they need additional elements such as: disks, network interfaces, IP addresses, etc for them to work. Therefore you may need to add additional resources within the copy loop.
+There are multiple ways to add additional VMs to your template, you could certainly copy and paste your resource section as many times as VMs you need to deploy, however that is not efficient and it will make your template not easy to reuse or manage, so you should use the [copy loop](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources?tabs=json) to create multiple instances of an specific resource section in your template. Although the goal is to create multiple Azure VMs keep in mind that they are not standalone resources and that they need additional elements such as: disks, network interfaces, IP addresses, etc for them to work. Therefore you may need to add additional resources within the copy loop.
 
-Another thing that you need to keep in mind is the naming of your resources if you hardcoded or used "static" names you will get an error as resource's names need to be unique within a scope. To avoid this issue use variables and leverage the function [copyIndex](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-numeric?tabs=json#copyindex)
+Another thing that you need to keep in mind is the naming of your resources if you hardcoded or used "static" names you will get an error as resource's names need to be unique within a scope. To avoid this issue use variables and leverage the function [copyIndex](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-numeric?tabs=json#copyindex)
 
 After you are done editing your template deploy it with:
 
@@ -32,7 +32,7 @@ Once the command has finished its run, use the Azure Portal to verify that you h
 
 ### Outputs
 
-Modify your ARM template to include the public IP addresses as an output, make sure to include both VMs. Use [this documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
+Modify your ARM template to include the public IP addresses as an output, make sure to include both VMs. Use [this documentation](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
 
 ### Food for Tought
 
@@ -52,10 +52,10 @@ You are done with this challenge when you have successfully:
 
 ## Resources
 
-- [ARM copy](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources?tabs=json)
-- [ARM copyIndex](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-numeric?tabs=json#copyindex)
-- [ARM template outputs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli)
-- [ARM deployment troubleshooting](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/common-deployment-errors)
+- [ARM copy](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources?tabs=json)
+- [ARM copyIndex](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-numeric?tabs=json#copyindex)
+- [ARM template outputs](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli)
+- [ARM deployment troubleshooting](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)
 
 ## What's next?
 
