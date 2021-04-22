@@ -1,6 +1,6 @@
 # Challenge 06 - Bicep
 
-We now understand the structure and basics of an ARM template as a way to automate the deployment of infrastructure. However authoring ARM templates, specially as they get bigger, is not simple. One way to simplofy this experience and have a cleaner syntax is tu use Azure Bicep.
+We now understand the structure and basics of an ARM template as a way to automate the deployment of infrastructure. However authoring ARM templates, specially as they get bigger, is not simple. One way to simplify this experience and have a cleaner syntax is tu use Azure Bicep.
 
 Azure Bicep is a Domain Specific Language for deploying resource in a declarative approach and that makes it easier for you to author ARM templates, it allows modularity and re-use of the code while having an abstraction over ARM.
 
@@ -22,7 +22,7 @@ az deployment group create   --name <deployment name>   --resource-group challen
 
 After the deployment have finished its run verify in the Azure Portal that all resources have been created properly.
 
-### Food for Tought
+### Food for Thought
 
 You have used now Azure Bicep as a way to deploy resources to Azure, however, let's explore other features:
 
@@ -42,7 +42,7 @@ bicep decompile arm_template.json
 ```
 
 - Compare the resulting bicep file with the one you have created before. Notice any differences?
-- Does it sound interesting to be able to go back and forth between the two apporaches?
+- Does it sound interesting to be able to go back and forth between the two approaches?
 
 ## Success Criteria
 
