@@ -67,7 +67,7 @@ To connect to your Azure Account from GitHub Actions you will also need to provi
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md).
+Once this section is completed, go back to [the agenda](../../README.md#challenges).
 
 [actions-quickstart]: https://docs.github.com/actions/quickstart "Quickstart for GitHub Actions"
 [azure-github]: https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-github-actions/ "Deploy ARM templates by using GitHub Actions"

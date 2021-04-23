@@ -59,7 +59,7 @@ After you have the image ready, modify the ARM template from the previous challe
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md).
+Once this section is completed, go back to [the agenda](../../README.md#challenges).
 
 [image-builder]: https://docs.microsoft.com/azure/virtual-machines/image-builder-overview "Image Builder Overview"
 [image-builder-tutorial]: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder "Create a Linux image and distribute it to a Shared Image Gallery by using Azure CLI"
