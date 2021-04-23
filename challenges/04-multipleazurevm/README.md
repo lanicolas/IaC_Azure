@@ -44,7 +44,7 @@ You are done with this challenge when you have successfully:
 
 - Created the following resources in Azure:
   - 2 VMs in Azure using an ARM template
-  - The resources were created using capabilities of ARM and not copy pasting mulitple instances.
+  - The resources were created using capabilities of ARM and not copy pasting multiple instances.
   - Had 2 public IP addresses
   - 1 NSG with port 22 and 80 open
   - 1 vnet with 1 subnet
