@@ -1,0 +1,165 @@
+name: build-image-and-test
+
+# Controls when the action will run. 
+on:
+  # manual run only with some parameters
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment name'
+        required: true
+        default: 'jm-azure'
+      resourceGroup:
+        description: 'Resource group name'
+        required: true
+        default: 'marketplace-poc03'
+
+jobs:
+  # this build can run in parallel with the template generation
+  build-vm:
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: ${{ github.event.inputs.environment }}
+
+    outputs:
+          imageUri: ${{ steps.build-vm-image.outputs.custom-image-uri }}
+          ip: ${{ steps.create-vm.outputs.ipaddr }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Create Workflow Artifacts
+        run: |
+          cd  ${{ GITHUB.WORKSPACE }}
+          mkdir workflow-artifacts/        
+          cp -r ${{ GITHUB.WORKSPACE }}/vmcontent/* ${{ GITHUB.WORKSPACE }}/workflow-artifacts/
+          
+      - name: Azure Login
+        uses: Azure/login@v1.1
+        with:
+          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+          creds:  ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check az providers and feature registration
+        uses: azure/CLI@1.0.4
+        #if: ${{ false }}
+        with:
+          azcliversion: latest
+          inlineScript: |
+            #constants
+            BLUE='\033[1;34m'
+            RED='\033[1;31m'
+            NC='\033[0m'
+            errorState=0
+
+            # Check provider list
+            providers=("Microsoft.VirtualMachineImages" "Microsoft.KeyVault" "Microsoft.Compute" "Microsoft.Storage" "Microsoft.Network")
+            for provider in ${providers[@]}; do
+              state=$(az provider show --namespace ${provider} -o tsv --query registrationState)
+              if [ $state != 'Registered' ]; then
+                      echo -e "::error::Account not registered for provider ${provider}\nPlease run this in your account:\n\t${BLUE}az provider register --namespace ${provider}${NC}"
+                      errorState=1
+              else
+                      echo "::debug::Provider ${provider} registered!"
+              fi
+            done
+
+            #check vm template feature (needed because it's still in preview)
+
+            state=$(az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview -o tsv --query properties.state)
+            if [ $state != 'Registered' ]; then
+                    echo -e "::error::Account not registered for VirtualMachineTemplatePreview\nPlease run this in your account:\n\t${BLUE}az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview${NC}"
+                    errorState=1
+            else
+                    echo "::debug::Feature registered!"
+            fi
+
+            exit $errorState
+
+      - name: Build VM Image
+        id: build-vm-image
+        uses: azure/build-vm-image@v0
+        with:        
+          resource-group-name: '${{ github.event.inputs.resourceGroup }}'
+          managed-identity: '${{ secrets.IDENTITYFORVM }}'
+          location: 'northeurope'
+          source-os-type: 'linux'        
+          source-image: Canonical:UbuntuServer:18.04-LTS:latest
+          customizer-script: |
+            env
+            mkdir /opt/app/
+            cp -r /tmp/workflow-artifacts/* /opt/app/
+            echo '######### run install.sh'
+            cd /opt/app
+            sudo sh install.sh
+
+  # creates the template based in bicep language
+  build-template:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bicep Build
+        id: bicep-build
+        uses: aliencube/bicep-build-actions@v0.3
+        with:
+          files: template/template.bicep
+      - name: Check the result
+        shell: bash
+        run: |
+          shopt -s globstar
+          ls -altR **/template*.*
+      - name: Upload template as artifact
+        uses: actions/upload-artifact@v2.2.3
+        with:
+          name: template
+          path: "**/template*.json"
+
+  # waits for the other to jobs and tests that the VM can be created
+  test:
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: ${{ github.event.inputs.environment }}
+    
+    needs: [build-vm, build-template]
+    
+    steps:
+      - name: Azure Login
+        uses: Azure/login@v1.1
+        with:
+          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+          creds:  ${{ secrets.AZURE_CREDENTIALS }}          
+      
+      - name: Create VM
+        id: create-vm
+        uses: Azure/cli@1.0.4
+        with:
+          inlineScript: |
+            echo ${{ steps.buildImage.outputs.custom-image-uri }}
+            az group create -n "app-vm-grp-${{ GITHUB.RUN_NUMBER }}" -l northeurope
+            
+            ipaddr=$(az vm create --resource-group "app-vm-grp-${{ GITHUB.RUN_NUMBER }}"  --name "app-vm-${{ GITHUB.RUN_NUMBER }}"  --admin-username azureadmin --generate-ssh-keys --location northeurope \
+            --image ${{ needs.build-vm.outputs.imageUri }} --public-ip-address-allocation dynamic --query publicIpAddress -o tsv)
+            
+            az vm open-port --port 80 -n "app-vm-${{ GITHUB.RUN_NUMBER }}" -g "app-vm-grp-${{ GITHUB.RUN_NUMBER }}"
+            echo "::set-output name=ipaddress::$ipaddr"
+            
+      - name: Test VM      
+        run: |
+            echo "Deployment finished. Checking ${{ steps.create-vm.outputs.ipaddress }} output"
+            echo -n "Warm up wait..."
+            sleep 15
+            echo "calling http endpoint.."
+            curl http://${{ steps.create-vm.outputs.ipaddress }}            
+      
+      - name: cleanup
+        uses: azure/CLI@1.0.4
+        with:
+          inlineScript: |
+            az group delete -n "app-vm-grp-${{ GITHUB.RUN_NUMBER }}" -y
+
+# todo: deploy

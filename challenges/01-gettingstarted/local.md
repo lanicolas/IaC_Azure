@@ -38,7 +38,7 @@ EnvironmentName    IsDefault    Name                             State    Tenant
 AzureCloud         True         Visual Studio Premium with MSDN  Enabled  GUID
 ```
 
-If you see multiple susbscriptions, select the one you are going to use for the challenges by running the following command:
+If you see multiple subscriptions, select the one you are going to use for the challenges by running the following command:
 
 ```shell
 az account set -s 59b082db-abf2-4a89-9703-xxxxxxxxxxx

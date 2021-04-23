@@ -65,4 +65,4 @@ You are done with this challenge when you have successfully:
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md).
+Once this section is completed, go back to [the agenda](../../README.md#challenges).

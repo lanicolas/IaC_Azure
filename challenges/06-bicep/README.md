@@ -14,7 +14,7 @@ Since you have now gone through the process of creating your own ARM templates, 
 
 You will create the same resources as you did in Challenge 04 but using Azure Bicep as a way to author the template. If you have not worked with Azure Bicep before, no worries you can follow [this tutorial](https://github.com/Azure/bicep/blob/main/docs/tutorial/01-simple-template.md) or you can leverage ARM template documentation from previous challenges, there you will see sections specific to Bicep.
 
-Once you are done authoring your Bicep file, deloy resources by:
+Once you are done authoring your Bicep file, deploy resources by:
 
 ```bash
 az deployment group create   --name <deployment name>   --resource-group challenge06  --template-file <bicepfile.bicep>
@@ -70,4 +70,4 @@ You are done with this challenge when you have successfully:
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md).
+Once this section is completed, go back to [the agenda](../../README.md#challenges).

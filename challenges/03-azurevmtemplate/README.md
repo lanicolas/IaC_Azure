@@ -108,7 +108,7 @@ az deployment group create \
 --parameters vm_template.parameters.json
 ```
 
-> **Note:** notice the diffence with the previous deployment command, what are the differences and why?
+> **Note:** notice the difference with the previous deployment command, what are the differences and why?
 
 ### Create the Azure Virtual Machine
 
@@ -149,7 +149,7 @@ You could check the value in the Azure Portal, however let's instead add an outp
 
 Modify your ARM template to include the public IP address as an output. Use [this documentation](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-outputs?tabs=json%2Cazure-cli) to guide you.
 
-### Food for Tought
+### Food for Thought
 
 Now that you have created your own ARM template and parameters file from scratch, go back to the ones you exported from the Azure Portal and compare the two:
 
@@ -180,4 +180,4 @@ You are done with this challenge when you have successfully:
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md).
+Once this section is completed, go back to [the agenda](../../README.md#challenges).

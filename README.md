@@ -13,7 +13,7 @@ This Workshop is focused on:
 
 Attendees will learn basics of Infrastructure as Code and gain skills on deploying and managing Azure resources using tools such as ARM.
 
-Practical examples in this workshop include the creation of some basic Azure Resouces, however many others can be deployed using the same techniques.
+Practical examples in this workshop include the creation of some basic Azure Resources, however many others can be deployed using the same techniques.
 
 ## Target audience
 

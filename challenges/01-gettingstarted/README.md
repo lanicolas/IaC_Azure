@@ -11,7 +11,7 @@ In this challenge, you will:
 - Verify `bicep` installation
 - Create a folder structure to complete challenges
 
-> **Note:** If you would rather complete the challenges from you local worskstation and install the tooling, detailed instructions can be found [here](local.md).
+> **Note:** If you would rather complete the challenges from you local workstation and install the tooling, detailed instructions can be found [here](local.md).
 
 ## How to
 
@@ -149,4 +149,4 @@ Once created, login.
 
 ## What's next?
 
-Once this section is completed, go back to [the agenda](../../README.md)
+Once this section is completed, go back to [the agenda](../../README.md#challenges)
