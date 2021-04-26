@@ -11,7 +11,7 @@ The resources you will use in this challenge:
 - Subnet
 - Network Interface
 - Virtual Machine
-- Public IP Address
+- Static public IP Address
 
 ## How to
 
