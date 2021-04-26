@@ -244,8 +244,7 @@
       "type": "array",
       "copy": {
         "count": "[parameters('vmCount')]", 
-        "input": "[reference(resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIPAddressName'),'-',copyIndex(parameters('vmCount')))).ipAddress)]"
-      }
+        "input": "[reference(resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIPAddressName'),'-',parameters('vmCount')))).ipAddress]"
     }
 }
 }
